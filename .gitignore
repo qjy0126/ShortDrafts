@@ -1,0 +1,8 @@
+.env
+.DS_Store
+__pycache__/
+*.pyc
+data/
+.vscode/
+7a10d1a6843c9b8e8e1fa59326bdb1ef.png
+
