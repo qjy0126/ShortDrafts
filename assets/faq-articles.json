@@ -1,0 +1,243 @@
+{
+  "guides": [
+    {
+      "id": "what-is-pack",
+      "category": "Product",
+      "title": "What is an AI Shorts content generator?",
+      "excerpt": "One topic in. Ideas, hooks, a spoken script, titles, and captions out.",
+      "image": "assets/images/guide-pack.jpg",
+      "alt": "A marked-up script on a wooden desk",
+      "published": "Sep 7, 2026",
+      "sections": [
+        {
+          "heading": "The short answer",
+          "paragraphs": [
+            "It is a writing tool. You type a topic, pick a platform, a style, and a length, and it returns a content pack you can speak, type on screen, and paste under a post.",
+            "It is not a video renderer. There is no MP4 at the end of the run."
+          ]
+        },
+        {
+          "heading": "What is in a pack",
+          "paragraphs": [
+            "A pack is the words around one idea, written for a 15–60 second clip."
+          ],
+          "bullets": [
+            "A few distinct angles so you can pick one",
+            "Hooks written for the first three seconds",
+            "A timed spoken script",
+            "Title options, a caption, a CTA, and on-screen lines"
+          ]
+        },
+        {
+          "heading": "Who it is for",
+          "paragraphs": [
+            "People who still shoot their own clips — talking head, B-roll, or a faceless voiceover. If you wanted an avatar studio, this is the wrong tab."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "not-a-finished-video",
+      "category": "Product",
+      "title": "Do I get a finished YouTube Short video?",
+      "excerpt": "No. You get the writing layer. The camera, the cut, and the post are still yours.",
+      "image": "assets/images/guide-camera.jpg",
+      "alt": "A camera on a tripod waiting to shoot",
+      "published": "Sep 7, 2026",
+      "sections": [
+        {
+          "heading": "What you walk away with",
+          "paragraphs": [
+            "A pack of copy. You can read the script into a mic, put the on-screen lines over B-roll, and paste a title and caption when you upload."
+          ]
+        },
+        {
+          "heading": "What this site will not do",
+          "paragraphs": [
+            "It will not stitch stock footage, clone a voice, or export a file you can upload as-is. If you need a video model or an editor, copy the words and use those tools after."
+          ],
+          "bullets": [
+            "No finished MP4",
+            "No avatar or fake studio",
+            "No promise that a pack goes viral"
+          ]
+        },
+        {
+          "heading": "A clean stop line",
+          "paragraphs": [
+            "If a claim would need a lawyer, a lab, or a licensed trade, it does not belong in a 30-second script here. The generator writes words. You decide what is safe to say on camera."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "faceless-scripts",
+      "category": "Use case",
+      "title": "Can I make faceless Shorts with this?",
+      "excerpt": "Yes. Pick the faceless style for a voiceover draft and lines that work without your face.",
+      "image": "assets/images/guide-faceless.jpg",
+      "alt": "Hands filming a product, no face on camera",
+      "published": "Sep 7, 2026",
+      "sections": [
+        {
+          "heading": "What faceless means here",
+          "paragraphs": [
+            "You stay off camera. The pack is written to be heard and read: a voiceover script, on-screen text, and titles that still stop a thumb without a talking head."
+          ]
+        },
+        {
+          "heading": "How to generate one",
+          "paragraphs": [
+            "On the generate page, set style to faceless. Keep the topic concrete — a product, a niche, or a single claim you can show with B-roll."
+          ],
+          "bullets": [
+            "Read the script into a mic, or drop it into a voice tool you already use",
+            "Lay the on-screen lines over screen recordings, hands, or stock you have rights to",
+            "Use a title and caption tuned to Shorts, TikTok, or Reels"
+          ]
+        },
+        {
+          "heading": "What still has to be yours",
+          "paragraphs": [
+            "Footage, voice, and the edit. The pack does not pick clips or license music. It only writes the words so the shoot has a spine."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "platforms",
+      "category": "Platforms",
+      "title": "Which platforms does it support?",
+      "excerpt": "YouTube Shorts, TikTok, and Instagram Reels — same idea, copy tuned to the app you post in.",
+      "image": "assets/images/guide-platforms.jpg",
+      "alt": "Three phones showing different vertical clips",
+      "published": "Sep 7, 2026",
+      "sections": [
+        {
+          "heading": "What changes per platform",
+          "paragraphs": [
+            "The idea can stay the same. Titles, captions, and hashtags shift so they sound native to the app you pick, not copied from another feed."
+          ]
+        },
+        {
+          "heading": "What does not change",
+          "paragraphs": [
+            "A pack is still a writing pack. You still shoot or assemble the clip. Algorithm tricks, bought views, and “guaranteed viral” language are not in scope."
+          ],
+          "bullets": [
+            "YouTube Shorts",
+            "TikTok",
+            "Instagram Reels"
+          ]
+        },
+        {
+          "heading": "If you post in more than one place",
+          "paragraphs": [
+            "Generate once per platform if you want the caption and hashtags retuned. Do not treat one caption as interchangeable across all three."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "free-daily",
+      "category": "Access",
+      "title": "Is it free?",
+      "excerpt": "Yes. Ten packs a day, no login, no credit card, no paid plan behind the button.",
+      "image": "assets/images/guide-free.jpg",
+      "alt": "A laptop and coffee on a cafe table",
+      "published": "Sep 7, 2026",
+      "sections": [
+        {
+          "heading": "What “free” means",
+          "paragraphs": [
+            "The generator is free to use. There is no Creator or Pro tier, and this site does not run ads on these pages."
+          ]
+        },
+        {
+          "heading": "The daily cap",
+          "paragraphs": [
+            "You get 10 content packs per day, counted by IP address. Regenerating a pack counts as a run. The cap exists so hosting stays up, not to upsell a paid plan."
+          ],
+          "bullets": [
+            "No account required",
+            "No credit card",
+            "The limit resets on the calendar day"
+          ]
+        },
+        {
+          "heading": "If you hit the wall",
+          "paragraphs": [
+            "Wait for the next day, or email contact@shortmind.com if a run failed and you think the count is wrong. Include the topic and about what time it happened."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hooks",
+      "category": "Craft",
+      "title": "Why every pack leads with hooks",
+      "excerpt": "The first three seconds are the job. Slow intros get skipped.",
+      "image": "assets/images/guide-hooks.jpg",
+      "alt": "A thumb pausing on a vertical video",
+      "published": "Sep 7, 2026",
+      "sections": [
+        {
+          "heading": "The three rules",
+          "paragraphs": [
+            "A Short lives or dies before the viewer decides to stay. Packs are written that way on purpose."
+          ],
+          "bullets": [
+            "Open on a claim, a tension, or a picture — not a greeting",
+            "Make the next line earn the last one",
+            "Land a CTA that a real person would actually say"
+          ]
+        },
+        {
+          "heading": "What you are working with",
+          "paragraphs": [
+            "Each pack includes several hook options so you can test more than one cold open on the same idea. If a hook feels like a clickbait lie, skip it. The rest of the script should still make sense without it."
+          ]
+        },
+        {
+          "heading": "After you pick a hook",
+          "paragraphs": [
+            "Read the full script out loud. If you cannot say it in one breath-friendly pass, cut it before you shoot. The generator drafts. You keep the final line."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "how-to-use",
+      "category": "How to",
+      "title": "How to turn a pack into a Short",
+      "excerpt": "Generate, pick one angle, shoot or voice it, then paste the title and caption.",
+      "image": "assets/images/guide-howto.jpg",
+      "alt": "A creator speaking to a phone on a tripod",
+      "published": "Sep 7, 2026",
+      "sections": [
+        {
+          "heading": "Before you generate",
+          "paragraphs": [
+            "Come in with one topic you can show. “Morning routine for nurses” works. “Make me famous” does not."
+          ]
+        },
+        {
+          "heading": "The pass",
+          "bullets": [
+            "Open generate and enter the topic",
+            "Pick Shorts, TikTok, or Reels",
+            "Choose talking-head or faceless, then a length",
+            "Generate, then pick one idea and one hook — not all of them"
+          ]
+        },
+        {
+          "heading": "Then leave this site",
+          "paragraphs": [
+            "Shoot, voice, or edit in the tools you already use. Come back only if you need another angle or a retune for a second platform.",
+            "If a generate run fails, use the contact page and include the topic and the time."
+          ]
+        }
+      ]
+    }
+  ]
+}

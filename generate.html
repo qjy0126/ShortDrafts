@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Generate — Shortsmind</title>
+  <meta name="description" content="Type a topic and generate a free Shorts content pack: ideas, hooks, script, titles, captions, and on-screen text.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png?v=8">
+  <link rel="stylesheet" href="assets/styles.css?v=28">
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="nav">
+    <div class="nav-inner">
+      <a class="brand" href="index.html">
+        <img src="assets/images/logo.png?v=8" width="1204" height="399" alt="Shortsmind">
+      </a>
+      <nav class="nav-links" id="nav-links" aria-label="Primary">
+        <a href="index.html">Home</a>
+        <a href="generate.html" aria-current="page">Write</a>
+        <a href="faq.html">FAQ</a>
+        <a href="about.html">About</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <a class="nav-cta" href="generate.html">Generate for Free</a>
+      <button class="menu-btn" type="button" id="menu-btn" aria-label="Open menu">Menu</button>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="generate-band" id="generate" style="background:transparent;padding-top:2.2rem">
+      <div class="wrap generate-wrap">
+        <div class="generate-copy">
+          <a class="page-back" href="index.html">← Back</a>
+          <p class="section-kicker">Try it</p>
+          <h1 style="font-size:clamp(2.2rem, 4vw, 3.4rem);margin-bottom:0.55rem">Start with one idea</h1>
+          <p class="section-lead">Type a topic, pick a platform, and get a full Shorts content pack in one click. Free. No login.</p>
+        </div>
+        <aside class="product" aria-label="Content generator">
+          <div class="product-top">
+            <span>New Short pack</span>
+            <span class="dots" aria-hidden="true"><span></span><span></span><span></span></span>
+          </div>
+          <div id="gen-form">
+            <label class="field-label" for="topic">Topic, niche, or product</label>
+            <textarea id="topic" autocomplete="off" placeholder="Enter a topic, product, or idea to generate"></textarea>
+
+            <label class="field-label">Platform</label>
+            <div class="chip-row" id="platform-chips">
+              <button type="button" class="chip is-on" data-value="YouTube Shorts">YouTube Shorts</button>
+              <button type="button" class="chip" data-value="TikTok">TikTok</button>
+              <button type="button" class="chip" data-value="Reels">Reels</button>
+            </div>
+
+            <label class="field-label">Style</label>
+            <div class="chip-row" id="style-chips">
+              <button type="button" class="chip is-on" data-value="explainer">Explainer</button>
+              <button type="button" class="chip" data-value="funny">Funny</button>
+              <button type="button" class="chip" data-value="story">Story</button>
+              <button type="button" class="chip" data-value="listicle">Listicle</button>
+              <button type="button" class="chip" data-value="faceless">Faceless</button>
+            </div>
+
+            <label class="field-label">Length</label>
+            <div class="chip-row" id="length-chips">
+              <button type="button" class="chip" data-value="15-30 seconds">15–30s</button>
+              <button type="button" class="chip is-on" data-value="30-45 seconds">30–45s</button>
+              <button type="button" class="chip" data-value="45-60 seconds">45–60s</button>
+            </div>
+
+            <button class="btn btn-primary generate-full" type="button" id="gen-btn">
+              <span class="btn-label">Generate for Free</span>
+              <span class="btn-wait" aria-hidden="true">
+                <span class="spinner"></span>
+                Writing pack…
+              </span>
+            </button>
+            <p class="quota" id="quota">Free: 10 content packs per day. No login.</p>
+          </div>
+
+          <div class="thinking" id="thinking" hidden>
+            <div class="thinking-row">
+              <span class="spinner"></span>
+              <p id="thinking-text">Reading your topic…</p>
+            </div>
+            <div class="skeleton" aria-hidden="true">
+              <span></span><span></span><span></span><span></span>
+            </div>
+          </div>
+
+          <div class="result" id="result"></div>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap footer-inner">
+      <div class="footer-brand">
+        <img src="assets/images/logo.png?v=8" width="1204" height="399" alt="Shortsmind">
+        <p>© <span id="year"></span> Shortsmind</p>
+        <p class="footer-legal"><a href="terms.html">Terms</a></p>
+      </div>
+      <nav class="footer-nav" aria-label="Footer">
+        <a href="index.html">Home</a>
+        <a href="generate.html">Write</a>
+        <a href="faq.html">FAQ</a>
+        <a href="about.html">About</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </footer>
+  <script src="assets/app.js?v=16"></script>
+</body>
+</html>

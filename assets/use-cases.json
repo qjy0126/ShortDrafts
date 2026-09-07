@@ -1,0 +1,227 @@
+{
+  "articles": [
+    {
+      "id": "faceless",
+      "category": "Use case",
+      "title": "Faceless channels",
+      "excerpt": "Batch ideas, hooks, and voiceover scripts for a niche you can post every day — without putting your face on camera.",
+      "image": "assets/images/use-faceless.jpg",
+      "alt": "A faceless filming setup with a camera, ring light, and styled table",
+      "published": "Sep 7, 2026",
+      "sections": [
+        {
+          "heading": "Who this is for",
+          "paragraphs": [
+            "A faceless channel is a posting habit, not a personality. You stay off camera. The viewer hears a voice, reads lines on screen, and watches B-roll, hands, or a screen recording.",
+            "This pack is written to be heard and read. It will not design your set, pick stock, or clone a voice. It gives you the words so you can batch a week of clips without inventing a new angle every morning."
+          ]
+        },
+        {
+          "heading": "What to type",
+          "paragraphs": [
+            "Come in with a niche you can show. “Three Amazon FBA mistakes that kill a first product” works. “Make me a faceless empire” does not."
+          ],
+          "bullets": [
+            "Name the niche and the one claim of this clip",
+            "Set style to Faceless and pick Shorts, TikTok, or Reels",
+            "15–30s if the clip is a list; 30–45s if it needs a short proof"
+          ]
+        },
+        {
+          "heading": "How to use the pack",
+          "paragraphs": [
+            "Generate, then pick one idea and one hook. Read the script into a mic, or drop it into a voice tool you already pay for. Lay the on-screen lines over footage you have rights to."
+          ],
+          "bullets": [
+            "Voiceover first, then cut picture to the words — not the other way around",
+            "Keep on-screen text in the 9:16 safe zone, above captions and like buttons",
+            "Reuse the same hook structure tomorrow with a new topic, not a new format"
+          ]
+        },
+        {
+          "heading": "What still has to be yours",
+          "paragraphs": [
+            "Footage, voice, music, and the edit. If a claim would need a license or a lab, it does not belong in a 30-second faceless script. Say what you can show."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "story",
+      "category": "Use case",
+      "title": "Story and listicle Shorts",
+      "excerpt": "Reddit-style stories, ranked lists, and fun-fact scripts with a hard open — written so the first three seconds do the job.",
+      "image": "assets/images/use-story.jpg?v=3",
+      "alt": "A young woman reading a story on her phone in a bright cafe",
+      "published": "Sep 7, 2026",
+      "sections": [
+        {
+          "heading": "What works in 30 seconds",
+          "paragraphs": [
+            "A story Short needs a cold open, one turn, and a landing. If the twist arrives after second 20, the setup is too long.",
+            "A listicle needs a ranked promise in the first line, then short beats. It is not a blog outline you would skip. Three items is usually enough. Five is a stretch unless each beat is one breath."
+          ]
+        },
+        {
+          "heading": "Prompt it like a brief",
+          "paragraphs": [
+            "Paste the premise, not a vibe. “Three mistakes new landlords make with first-time tenants” beats “make a viral list.” “My roommate moved out and left the lease in my name” beats “tell a story.”"
+          ],
+          "bullets": [
+            "Style: Story or Listicle",
+            "Length: 15–30s for a list, 30–45s for a story with a turn",
+            "Pick one hook from the pack. Do not stack all five in the same clip"
+          ]
+        },
+        {
+          "heading": "After you generate",
+          "paragraphs": [
+            "Read the script out loud. Cut any line that explains the joke. Keep the on-screen text for the ranked numbers or the one sentence that makes someone stay.",
+            "If you are retelling a real incident, do not ask the generator to invent facts. Bring the true beat, then let the pack write the wrap."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "education",
+      "category": "Use case",
+      "title": "Educational explainers",
+      "excerpt": "Turn one concept into a 30-second lesson with a hook, a proof, and a recap — not a syllabus.",
+      "image": "assets/images/use-education.jpg?v=3",
+      "alt": "A course creator explaining a concept at a bright desk",
+      "published": "Sep 7, 2026",
+      "sections": [
+        {
+          "heading": "One idea, not a course",
+          "paragraphs": [
+            "An explainer Short teaches one move. Hook with the outcome, prove it in the middle, recap in the last line. If you need a module list, this is the wrong length.",
+            "Viewers stay for a result they can use before the clip ends: a shortcut, a rule, a correction. They leave if you start with “welcome back to the channel.”"
+          ]
+        },
+        {
+          "heading": "What to type",
+          "paragraphs": [
+            "Name the concept and who it is for. “How nurses chart a pain score in 20 seconds” is a pack. “Teach medicine” is not. “The one Excel trick finance interns mess up on day one” is a pack. “Excel tutorial” is not."
+          ],
+          "bullets": [
+            "Style: Explainer",
+            "Ask for on-screen text that matches the three beats: hook, proof, recap",
+            "Write a CTA that points to the next lesson, not a generic follow"
+          ]
+        },
+        {
+          "heading": "How to shoot it",
+          "paragraphs": [
+            "Talking head works if you can hold the frame. Faceless works if the proof is a screen, a whiteboard, or hands. Either way, the script should still make sense with the picture off.",
+            "If a claim would need a license, a lab, or a lawyer, stop. Say what you can demonstrate in the clip. The generator drafts the words. You keep the stop line."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "product",
+      "category": "Use case",
+      "title": "Product and promo",
+      "excerpt": "Paste a brief and get a short ad script, titles, and caption variants — then shoot the thing on your table.",
+      "image": "assets/images/use-product.jpg?v=2",
+      "alt": "Men's sneakers, watch, and cologne being filmed for a short promo",
+      "published": "Sep 7, 2026",
+      "sections": [
+        {
+          "heading": "What to paste",
+          "paragraphs": [
+            "A product name, who it is for, one proof, and a price or offer if you have one. Optional: the objection you always hear. The pack writes a spoken ad, titles, and a caption — not a brand film.",
+            "“Matte-black daily sneaker, $89, for people who walk 8k steps and hate breaking in leather” is a brief. “Promote my brand” is not."
+          ]
+        },
+        {
+          "heading": "How to shoot it",
+          "paragraphs": [
+            "You still hold the product. Use the script as a talking-head pass, or as voiceover over hands, unbox, and B-roll. One offer per clip. If you have a code, say it once at the end — not in the hook."
+          ],
+          "bullets": [
+            "Keep the hook on the outcome, not the logo",
+            "Show the product in the first three seconds if the script mentions it",
+            "Regenerate titles when you need a search-led variant for Shorts"
+          ]
+        },
+        {
+          "heading": "What this will not do",
+          "paragraphs": [
+            "It will not stitch stock, clone a voice, or guarantee a sale. Claims about medical results, income, or guaranteed outcomes do not belong in a 30-second promo here. Copy the words, then shoot what is actually on the table."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "podcast",
+      "category": "Use case",
+      "title": "Podcast clip scripts",
+      "excerpt": "Turn a long idea into a tight 20-second cut-down someone can watch without the full episode.",
+      "image": "assets/images/use-podcast.jpg",
+      "alt": "A podcast microphone, headphones, and laptop on a white desk",
+      "published": "Sep 7, 2026",
+      "sections": [
+        {
+          "heading": "Cut-downs, not the episode",
+          "paragraphs": [
+            "A feed clip has to stand alone. Paste the point you want clipped — a take, a story beat, a disagreement — not the whole transcript. The pack writes a 15–30s script a stranger can watch without knowing the show.",
+            "If you paste 2,000 words of transcript, pick the one paragraph that is the clip. The generator is not an editor of the episode file."
+          ]
+        },
+        {
+          "heading": "Two ways to use it",
+          "paragraphs": [
+            "Talking head: sit down and say the new short script to camera, even if the original was a two-person chat. Faceless: voice the script over a waveform, B-roll, or a quote card."
+          ],
+          "bullets": [
+            "Length: 15–30s unless the take needs a second of air",
+            "On-screen text for the line you want burned in before the CTA",
+            "Caption should name the show and the episode if you want the click-through"
+          ]
+        },
+        {
+          "heading": "Keep it honest",
+          "paragraphs": [
+            "Do not ask the generator to invent a guest quote. Bring the real line, then let the pack write the wrap around it. If the original take was messy, that is fine — the Short can be clean without becoming a different claim."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "platforms",
+      "category": "Use case",
+      "title": "Multi-platform captions",
+      "excerpt": "One spoken script, then titles and hashtags retuned for Shorts, TikTok, and Reels — not one caption pasted three times.",
+      "image": "assets/images/use-platforms.jpg?v=2",
+      "alt": "Three phones standing in a row, each showing a vertical video of male lifestyle clips",
+      "published": "Sep 7, 2026",
+      "sections": [
+        {
+          "heading": "What changes per app",
+          "paragraphs": [
+            "The idea and the spoken script can stay the same. Titles, captions, and hashtags should not. Each app has a different shelf, a different search habit, and a different tolerance for hashtag dumps.",
+            "YouTube Shorts often wants a searchable title. TikTok wants a caption that still works if the sound is off. Reels wants a line that looks native next to Stories, not a YouTube description dropped in."
+          ]
+        },
+        {
+          "heading": "How to run it",
+          "paragraphs": [
+            "Generate once for the platform you will post first. If you post the same clip in a second app, generate again with that platform selected so the caption and titles retune. Do not treat one caption as interchangeable."
+          ],
+          "bullets": [
+            "Same topic, same style, change only the platform",
+            "Keep the spoken script if it already fits; swap titles and caption",
+            "Skip “guaranteed viral” hashtag lists — the pack should not invent them"
+          ]
+        },
+        {
+          "heading": "What does not change",
+          "paragraphs": [
+            "You still shoot the clip. Algorithm tricks, bought views, and a promise that the pack will hit the For You page are not in scope. The writing is. If you only have time for one upload, pick the app you actually check, generate for that one, and post."
+          ]
+        }
+      ]
+    }
+  ]
+}
