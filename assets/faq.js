@@ -69,7 +69,7 @@
       ${renderSections(guide.sections)}`;
   }
 
-  fetch("assets/faq-articles.json?v=5")
+  fetch("assets/faq-articles.json?v=6")
     .then((response) => {
       if (!response.ok) throw new Error("Could not load guides");
       return response.json();

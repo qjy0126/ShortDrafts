@@ -7,7 +7,11 @@ description: Add or refresh ShortDrafts FAQ guides and use-case articles in JSON
 
 ShortDrafts articles are static JSON, not a CMS. GitHub stores the files. The local site at `http://127.0.0.1:4173/` shows them after refresh. A public domain only updates if that host pulls this repo (for example GitHub Pages). Pushing to GitHub does not by itself change a live custom domain.
 
+GitHub Actions runs `scripts/weekly_article.py` twice a week (Monday and Thursday, 10:00 China time). Each run adds one FAQ guide that rotates through the six homepage lanes: Faceless, Story/listicle, Education, Product, Podcast, Multi-platform. Homepage cards stay as those six lanes. New pieces go to `faq.html`.
+
 Do not invent a deploy or fake empty commits. Write a real article, then commit and push.
+
+To change the cadence, edit `.github/workflows/weekly-articles.yml`. Manual run: GitHub → Actions → Weekly articles → Run workflow. Add repo secret `AGNES_API_KEY` so the script can write a fresh guide; without it, a on-brand fallback still publishes.
 
 ## Which file
 
@@ -57,4 +61,4 @@ Keep the same voice: direct, no viral promises, no MP4, no avatar studio.
 
 Never commit `.env`. If `git push` to github.com times out, use the GitHub API Contents/Git Data flow against `qjy0126/shortsmind` on `main`, same as this repo's first upload.
 
-GitHub Actions cannot write useful articles by themselves unless the user later adds a model secret. Prefer this skill in Cursor over a fake cron.
+GitHub Actions can publish twice a week via `.github/workflows/weekly-articles.yml`. This skill is for extra articles between those runs, or for edits.
