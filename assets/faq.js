@@ -51,21 +51,21 @@
     if (!root) return;
     const guide = guides.find((item) => item.id === queryId());
     if (!guide) {
-      document.title = "Guide not found — Shortsmind";
+      document.title = "Guide not found — ShortDrafts";
       root.innerHTML = `
         <p class="guide-kicker">FAQ</p>
         <h1>This guide is not here.</h1>
         <p class="guide-dek">It may have been renamed. Back to <a href="faq.html">all guides</a>.</p>`;
       return;
     }
-    document.title = `${guide.title} — Shortsmind`;
+    document.title = `${guide.title} — ShortDrafts`;
     const meta = document.querySelector('meta[name="description"]');
     if (meta) meta.setAttribute("content", guide.excerpt);
     root.innerHTML = `
       <p class="guide-kicker">${esc(guide.category)}</p>
       <h1>${esc(guide.title)}</h1>
       <p class="guide-dek">${esc(guide.excerpt)}</p>
-      <p class="guide-byline">By <b>Shortsmind</b> · Published ${esc(guide.published)}</p>
+      <p class="guide-byline">By <b>ShortDrafts</b> · Published ${esc(guide.published)}</p>
       ${renderSections(guide.sections)}`;
   }
 

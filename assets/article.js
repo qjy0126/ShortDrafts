@@ -38,21 +38,21 @@
     .then((data) => {
       const article = (data.articles || []).find((item) => item.id === queryId());
       if (!article) {
-        document.title = "Article not found — Shortsmind";
+        document.title = "Article not found — ShortDrafts";
         root.innerHTML = `
           <p class="guide-kicker">Use case</p>
           <h1>This article is not here.</h1>
           <p class="guide-dek">Back to <a href="index.html#use-cases">use cases</a>.</p>`;
         return;
       }
-      document.title = `${article.title} — Shortsmind`;
+      document.title = `${article.title} — ShortDrafts`;
       const meta = document.querySelector('meta[name="description"]');
       if (meta) meta.setAttribute("content", article.excerpt);
       root.innerHTML = `
         <p class="guide-kicker">${esc(article.category)}</p>
         <h1>${esc(article.title)}</h1>
         <p class="guide-dek">${esc(article.excerpt)}</p>
-        <p class="guide-byline">By <b>Shortsmind</b> · Published ${esc(article.published)}</p>
+        <p class="guide-byline">By <b>ShortDrafts</b> · Published ${esc(article.published)}</p>
         <img class="guide-hero" src="${esc(article.image)}" width="1200" height="675" alt="${esc(article.alt)}">
         ${renderSections(article.sections)}
         <a class="btn btn-primary guide-cta" href="generate.html">Generate for Free →</a>`;
