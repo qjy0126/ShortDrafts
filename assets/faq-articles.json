@@ -1,6 +1,48 @@
 {
   "guides": [
     {
+      "id": "faceless-note-20260908",
+      "category": "Use case",
+      "title": "How to Brief the Faceless Channel Generator",
+      "excerpt": "Learn to prompt ShortDrafts for daily faceless content without revealing your identity.",
+      "image": "assets/images/guide-faceless.jpg",
+      "alt": "Hands filming a product, no face on camera",
+      "published": "Sep 8, 2026",
+      "sections": [
+        {
+          "heading": "What channels qualify?",
+          "paragraphs": [
+            "Faceless channels let you post daily without showing your face. Think voiceover shorts, product demos, or text-driven narratives.",
+            "ShortDrafts generates batch ideas, hooks, and timed scripts tailored to these formats."
+          ],
+          "bullets": [
+            "Voiceover narration over B-roll",
+            "Product unboxing or demonstration",
+            "Text-on-screen storytelling"
+          ]
+        },
+        {
+          "heading": "How to write an effective brief?",
+          "paragraphs": [
+            "Start with your niche and target audience. Specify video length, tone, and any recurring motifs.",
+            "Add constraints like ‘no face shown’ and ‘focus on hands or objects’ to keep the generator on track."
+          ],
+          "bullets": [
+            "Niche: e.g., tech gadgets, cozy gaming",
+            "Length: 15–30 seconds",
+            "Tone: casual, informative, or dramatic"
+          ]
+        },
+        {
+          "heading": "Where to generate and export?",
+          "paragraphs": [
+            "Open the ShortDrafts interface and paste your brief. The tool returns a complete package ready for editing.",
+            "To start a new project, go to the generate page in plain words—just type the URL ending in generate.html into your browser."
+          ]
+        }
+      ]
+    },
+    {
       "id": "what-is-pack",
       "category": "Product",
       "title": "What is an AI Shorts content generator?",
