@@ -1,17 +1,15 @@
-import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-app.js";
-import { getAnalytics, isSupported } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-analytics.js";
-
-const firebaseConfig = {
-  apiKey: "AIzaSyD0QIfKTXS7hH4_DpRfaatAowNn6sevEhU",
-  authDomain: "soaprail.firebaseapp.com",
-  projectId: "soaprail",
-  storageBucket: "soaprail.firebasestorage.app",
-  messagingSenderId: "933579566820",
-  appId: "1:933579566820:web:2f5333f42d59d8ce7b86f1",
-  measurementId: "G-NSY7CFTQTE",
-};
-
-const app = initializeApp(firebaseConfig);
-isSupported().then((ok) => {
-  if (ok) getAnalytics(app);
-});
+(function () {
+  if (window.__sdGtag) return;
+  window.__sdGtag = true;
+  const id = "G-NSY7CFTQTE";
+  window.dataLayer = window.dataLayer || [];
+  window.gtag = function () {
+    window.dataLayer.push(arguments);
+  };
+  window.gtag("js", new Date());
+  window.gtag("config", id);
+  const s = document.createElement("script");
+  s.async = true;
+  s.src = "https://www.googletagmanager.com/gtag/js?id=" + id;
+  document.head.appendChild(s);
+})();

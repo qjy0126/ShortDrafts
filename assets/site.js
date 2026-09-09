@@ -1,6 +1,12 @@
-if (document.currentScript && document.currentScript.src) {
-  import(new URL("firebase-analytics.js", document.currentScript.src).href).catch(() => {});
-}
+(function loadAnalytics() {
+  if (window.__sdAnalytics) return;
+  window.__sdAnalytics = true;
+  const src = document.currentScript && document.currentScript.src;
+  const s = document.createElement("script");
+  s.src = (src ? new URL("firebase-analytics.js", src).href : "/assets/firebase-analytics.js") + "?v=2";
+  s.async = true;
+  document.head.appendChild(s);
+})();
 
 document.getElementById("year") && (document.getElementById("year").textContent = new Date().getFullYear());
 
