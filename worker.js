@@ -147,12 +147,23 @@ function regenPayload(env, field, topic, platform, style, length, pack) {
   };
 }
 
+function friendlyAgnesError(err) {
+  const msg = err && err.message ? err.message : String(err || "Generation failed");
+  if (/HTTP 429/.test(msg)) {
+    return "The writer is busy right now. Wait about a minute, then generate again. This try was not counted.";
+  }
+  if (/AGNES_API_KEY is missing/.test(msg)) {
+    return "The generator is missing its key. Try again in a few minutes.";
+  }
+  return msg;
+}
+
 async function agnesComplete(env, payload) {
   const key = env.AGNES_API_KEY;
   if (!key) throw new Error("AGNES_API_KEY is missing");
   const base = (env.AGNES_BASE_URL || "https://apihub.agnes-ai.com/v1").replace(/\/$/, "");
   let lastError = new Error("Agnes request failed");
-  for (let i = 0; i < 3; i += 1) {
+  for (let i = 0; i < 4; i += 1) {
     try {
       const response = await fetch(`${base}/chat/completions`, {
         method: "POST",
@@ -163,6 +174,9 @@ async function agnesComplete(env, payload) {
         body: JSON.stringify(payload),
       });
       const body = await response.json().catch(() => ({}));
+      if (response.status === 429) {
+        throw new Error(`Agnes HTTP 429: ${JSON.stringify(body).slice(0, 300)}`);
+      }
       if (!response.ok) {
         throw new Error(`Agnes HTTP ${response.status}: ${JSON.stringify(body).slice(0, 300)}`);
       }
@@ -171,7 +185,8 @@ async function agnesComplete(env, payload) {
       return String(content);
     } catch (err) {
       lastError = err;
-      await new Promise((resolve) => setTimeout(resolve, 400 * (i + 1)));
+      const wait = /HTTP 429/.test(err.message) ? 2000 * (i + 1) : 400 * (i + 1);
+      await new Promise((resolve) => setTimeout(resolve, wait));
     }
   }
   throw lastError;
@@ -193,8 +208,8 @@ async function handleGenerate(request, env) {
   const brief = readBrief(data);
   if (brief.error) return brief.error;
   const ip = clientIp(request);
-  const quota = await consume(ip);
-  if (!quota.ok) {
+  const leftBefore = await remaining(ip);
+  if (leftBefore <= 0) {
     return json(
       { error: `Free limit reached: ${FREE_LIMIT} generations per day. Come back tomorrow.`, remaining: 0 },
       429
@@ -203,9 +218,10 @@ async function handleGenerate(request, env) {
   try {
     const raw = await agnesComplete(env, packPayload(env, brief.topic, brief.platform, brief.style, brief.length));
     const pack = normalizePack(extractJson(raw));
+    const quota = await consume(ip);
     return json({ ...pack, remaining: quota.left, limit: FREE_LIMIT });
   } catch (err) {
-    return json({ error: err.message || String(err), remaining: await remaining(ip) }, 502);
+    return json({ error: friendlyAgnesError(err), remaining: leftBefore }, 502);
   }
 }
 
@@ -217,8 +233,8 @@ async function handleRegenerate(request, env) {
   const field = String(data.field || "").trim();
   if (!FIELD_SPECS[field]) return json({ error: "Unknown field" }, 400);
   const ip = clientIp(request);
-  const quota = await consume(ip);
-  if (!quota.ok) {
+  const leftBefore = await remaining(ip);
+  if (leftBefore <= 0) {
     return json(
       { error: `Free limit reached: ${FREE_LIMIT} generations per day. Come back tomorrow.`, remaining: 0 },
       429
@@ -233,9 +249,10 @@ async function handleRegenerate(request, env) {
     const parsed = extractJson(raw);
     const value = parsed.value ?? parsed[field];
     if (value == null) throw new Error("Could not regenerate that field");
+    const quota = await consume(ip);
     return json({ field, value, remaining: quota.left });
   } catch (err) {
-    return json({ error: err.message || String(err) }, 502);
+    return json({ error: friendlyAgnesError(err), remaining: leftBefore }, 502);
   }
 }
 

@@ -430,4 +430,38 @@ async function runGenerate() {
   }
 }
 
+function applyQueryChips() {
+  const params = new URLSearchParams(window.location.search);
+  const platformRaw = (params.get("platform") || "").trim().toLowerCase();
+  const styleRaw = (params.get("style") || "").trim().toLowerCase();
+  const lengthRaw = (params.get("length") || "").trim().toLowerCase();
+  const platforms = {
+    shorts: "YouTube Shorts",
+    "youtube shorts": "YouTube Shorts",
+    youtube: "YouTube Shorts",
+    tiktok: "TikTok",
+    reels: "Reels",
+    "instagram reels": "Reels",
+  };
+  const styles = {
+    explainer: "explainer",
+    funny: "funny",
+    story: "story",
+    listicle: "listicle",
+    faceless: "faceless",
+  };
+  const lengths = {
+    "15-30": "15-30 seconds",
+    "15-30 seconds": "15-30 seconds",
+    "30-45": "30-45 seconds",
+    "30-45 seconds": "30-45 seconds",
+    "45-60": "45-60 seconds",
+    "45-60 seconds": "45-60 seconds",
+  };
+  if (platforms[platformRaw]) setChip("platform-chips", platforms[platformRaw]);
+  if (styles[styleRaw]) setChip("style-chips", styles[styleRaw]);
+  if (lengths[lengthRaw]) setChip("length-chips", lengths[lengthRaw]);
+}
+
 restore();
+applyQueryChips();
