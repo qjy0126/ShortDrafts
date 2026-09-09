@@ -35,6 +35,8 @@ Match neighbors. English only. Brand is **ShortDrafts**. Email is `contact@short
   "image": "assets/images/guide-pack.jpg",
   "alt": "Plain description of the photo",
   "published": "Sep 8, 2026",
+  "author": "Maya Ellison",
+  "authorId": "maya-ellison",
   "sections": [
     {
       "heading": "Heading",
@@ -54,7 +56,7 @@ Keep the same voice: direct, no viral promises, no MP4, no avatar studio.
 1. Read the target JSON and pick add vs edit.
 2. Write or revise one article (or a small set the user named). Put new guides at the top of `guides` / `articles`.
 3. Validate JSON parses.
-4. If the user asked to put it on GitHub, commit only the JSON (and images if added). Message like `Add guide on batching faceless scripts.` Then push `main` to `origin`.
+4. If the user asked to put it on GitHub, commit the JSON, `sitemap.xml` if URLs changed, and images if added. Message like `Add guide on batching faceless scripts.` Then push `main` to `origin`.
 5. Tell the user: GitHub commit is live at https://github.com/qjy0126/ShortDrafts ; local preview is `http://127.0.0.1:4173/faq.html` or the use-case card.
 
 ## Push notes

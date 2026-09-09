@@ -8,6 +8,8 @@
       "image": "assets/images/guide-faceless.jpg",
       "alt": "Hands filming a product, no face on camera",
       "published": "Sep 8, 2026",
+      "author": "Maya Ellison",
+      "authorId": "maya-ellison",
       "sections": [
         {
           "heading": "What channels qualify?",
@@ -39,6 +41,20 @@
             "Open the ShortDrafts interface and paste your brief. The tool returns a complete package ready for editing.",
             "To start a new project, go to the generate page in plain words—just type the URL ending in generate.html into your browser."
           ]
+        },
+        {
+          "heading": "What the platforms actually say",
+          "paragraphs": [
+            "A faceless brief should name what the viewer will see if you are not on camera: hands, a product, a screen, B-roll you already have rights to. YouTube still expects you to record or upload a Short and add a title. The generator only writes the words for that upload.",
+            "Keep ‘no face’ as a constraint in the topic box. Vague prompts like ‘faceless empire’ produce generic hooks. Concrete niches produce scripts you can batch."
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "quote": "YouTube Shorts is a way for anyone to connect with a new audience using just a smartphone and the Shorts camera in the YouTube app. YouTube’s Shorts creation tools makes it easy to create short-form videos that are up to 3 minutes long with our multi-segment camera.",
+          "attribution": "YouTube Help, Get started creating YouTube Shorts",
+          "url": "https://support.google.com/youtube/answer/10059070"
         }
       ]
     },
@@ -50,6 +66,8 @@
       "image": "assets/images/guide-pack.jpg",
       "alt": "A marked-up script on a wooden desk",
       "published": "Sep 7, 2026",
+      "author": "Jordan Hale",
+      "authorId": "jordan-hale",
       "sections": [
         {
           "heading": "The short answer",
@@ -75,6 +93,20 @@
           "paragraphs": [
             "People who still shoot their own clips — talking head, B-roll, or a faceless voiceover. If you wanted an avatar studio, this is the wrong tab."
           ]
+        },
+        {
+          "heading": "What the platforms actually say",
+          "paragraphs": [
+            "YouTube’s help center describes Shorts as short-form videos you create on a phone, then title and upload. ShortDrafts sits one step before that: the ideas, hooks, spoken script, titles, and captions. There is no MP4 at the end of a generate run, because the shoot is still yours.",
+            "If a tool promises a finished clip from one prompt, that is a different product. This one is the writing layer so you can open the YouTube, TikTok, or Reels camera with a script in hand."
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "quote": "YouTube Shorts is a way for anyone to connect with a new audience using just a smartphone and the Shorts camera in the YouTube app. YouTube’s Shorts creation tools makes it easy to create short-form videos that are up to 3 minutes long with our multi-segment camera.",
+          "attribution": "YouTube Help, Get started creating YouTube Shorts",
+          "url": "https://support.google.com/youtube/answer/10059070"
         }
       ]
     },
@@ -86,6 +118,8 @@
       "image": "assets/images/guide-camera.jpg",
       "alt": "A camera on a tripod waiting to shoot",
       "published": "Sep 7, 2026",
+      "author": "Riley Chen",
+      "authorId": "riley-chen",
       "sections": [
         {
           "heading": "What you walk away with",
@@ -109,6 +143,20 @@
           "paragraphs": [
             "If a claim would need a lawyer, a lab, or a licensed trade, it does not belong in a 30-second script here. The generator writes words. You decide what is safe to say on camera."
           ]
+        },
+        {
+          "heading": "What the platforms actually say",
+          "paragraphs": [
+            "Creating a Short, in YouTube’s own wording, means recording or uploading a vertical clip, then adding a title and publishing. ShortDrafts does not do those last steps. It writes the spoken and on-screen copy you take into that flow.",
+            "Use an editor or a voice tool after you copy the pack. Do not wait here for an export button. There is not one."
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "quote": "YouTube Shorts is a way for anyone to connect with a new audience using just a smartphone and the Shorts camera in the YouTube app. YouTube’s Shorts creation tools makes it easy to create short-form videos that are up to 3 minutes long with our multi-segment camera.",
+          "attribution": "YouTube Help, Get started creating YouTube Shorts",
+          "url": "https://support.google.com/youtube/answer/10059070"
         }
       ]
     },
@@ -120,6 +168,8 @@
       "image": "assets/images/guide-faceless.jpg",
       "alt": "Hands filming a product, no face on camera",
       "published": "Sep 7, 2026",
+      "author": "Sam Ortega",
+      "authorId": "sam-ortega",
       "sections": [
         {
           "heading": "What faceless means here",
@@ -143,6 +193,25 @@
           "paragraphs": [
             "Footage, voice, and the edit. The pack does not pick clips or license music. It only writes the words so the shoot has a spine."
           ]
+        },
+        {
+          "heading": "What the platforms actually say",
+          "paragraphs": [
+            "Faceless still means a real clip: voice plus picture. YouTube Shorts are uploaded videos; TikTok can auto-caption speech so the words stay readable if the sound is off. Write the voiceover first, then lay picture, then check captions against the script so they match what you said.",
+            "The pack will not license B-roll or clone a voice. Bring footage and a mic you already have."
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "quote": "YouTube Shorts is a way for anyone to connect with a new audience using just a smartphone and the Shorts camera in the YouTube app. YouTube’s Shorts creation tools makes it easy to create short-form videos that are up to 3 minutes long with our multi-segment camera.",
+          "attribution": "YouTube Help, Get started creating YouTube Shorts",
+          "url": "https://support.google.com/youtube/answer/10059070"
+        },
+        {
+          "quote": "Auto-generated captions use speech recognition technology to generate text for audio or video content. Captions will be automatically generated for videos that you upload. This can help people who are deaf or hard of hearing to access content on TikTok.",
+          "attribution": "TikTok Support, Accessibility for your videos",
+          "url": "https://support.tiktok.com/en/using-tiktok/creating-videos/accessibility"
         }
       ]
     },
@@ -154,6 +223,8 @@
       "image": "assets/images/guide-platforms.jpg",
       "alt": "Three phones showing different vertical clips",
       "published": "Sep 7, 2026",
+      "author": "Priya Nair",
+      "authorId": "priya-nair",
       "sections": [
         {
           "heading": "What changes per platform",
@@ -177,6 +248,25 @@
           "paragraphs": [
             "Generate once per platform if you want the caption and hashtags retuned. Do not treat one caption as interchangeable across all three."
           ]
+        },
+        {
+          "heading": "What the platforms actually say",
+          "paragraphs": [
+            "YouTube asks for a Short title of up to 100 characters. TikTok can auto-generate captions from speech so deaf and hard-of-hearing viewers can follow the clip. Those are different jobs. One spoken script can travel; the title, caption, and on-screen lines should be retuned per app.",
+            "Generate once for the app you will post first. If you upload the same cut elsewhere, run the pack again with that platform selected instead of pasting the same caption three times."
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "quote": "From this screen, add a title (max 100 characters), and choose settings, like video privacy.",
+          "attribution": "YouTube Help, Get started creating YouTube Shorts",
+          "url": "https://support.google.com/youtube/answer/10059070"
+        },
+        {
+          "quote": "Auto-generated captions use speech recognition technology to generate text for audio or video content. Captions will be automatically generated for videos that you upload. This can help people who are deaf or hard of hearing to access content on TikTok.",
+          "attribution": "TikTok Support, Accessibility for your videos",
+          "url": "https://support.tiktok.com/en/using-tiktok/creating-videos/accessibility"
         }
       ]
     },
@@ -188,6 +278,8 @@
       "image": "assets/images/guide-free.jpg",
       "alt": "A laptop and coffee on a cafe table",
       "published": "Sep 7, 2026",
+      "author": "Casey Brooks",
+      "authorId": "casey-brooks",
       "sections": [
         {
           "heading": "What “free” means",
@@ -211,6 +303,20 @@
           "paragraphs": [
             "Wait for the next day, or email contact@shortdrafts.com if a run failed and you think the count is wrong. Include the topic and about what time it happened."
           ]
+        },
+        {
+          "heading": "What the platforms actually say",
+          "paragraphs": [
+            "The 10-pack cap is a hosting limit on this site, not a YouTube rule. YouTube counts Shorts views when a clip starts to play or replay, with no minimum watch time. That metric is about their feed, not about how many drafts you generate here.",
+            "If you hit the daily wall, wait until tomorrow. Email contact@shortdrafts.com only if a run failed and the count looks wrong."
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "quote": "Views will count the number of times a Short starts to play or replay, with no minimum watch time requirement.",
+          "attribution": "YouTube Help, Get started creating YouTube Shorts",
+          "url": "https://support.google.com/youtube/answer/10059070"
         }
       ]
     },
@@ -222,6 +328,8 @@
       "image": "assets/images/guide-hooks.jpg",
       "alt": "A thumb pausing on a vertical video",
       "published": "Sep 7, 2026",
+      "author": "Alex Brennan",
+      "authorId": "alex-brennan",
       "sections": [
         {
           "heading": "The three rules",
@@ -245,6 +353,20 @@
           "paragraphs": [
             "Read the full script out loud. If you cannot say it in one breath-friendly pass, cut it before you shoot. The generator drafts. You keep the final line."
           ]
+        },
+        {
+          "heading": "What the platforms actually say",
+          "paragraphs": [
+            "YouTube now lets creators request in-app feedback on a Short’s hook and pacing after they record. That is a post-shoot check. The pack still leads with several hook lines so you choose a cold open before the camera rolls.",
+            "A greeting wastes the first three seconds. Open on a claim, a tension, or a picture. If a hook oversells the script, throw the hook away and keep the rest."
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "quote": "Get feedback: Tap the Get feedback button to get an analysis of your video's hook, pacing, and more.",
+          "attribution": "YouTube Help, Get started creating YouTube Shorts",
+          "url": "https://support.google.com/youtube/answer/10059070"
         }
       ]
     },
@@ -256,6 +378,8 @@
       "image": "assets/images/guide-howto.jpg",
       "alt": "A creator speaking to a phone on a tripod",
       "published": "Sep 7, 2026",
+      "author": "Nina Volk",
+      "authorId": "nina-volk",
       "sections": [
         {
           "heading": "Before you generate",
@@ -278,6 +402,25 @@
             "Shoot, voice, or edit in the tools you already use. Come back only if you need another angle or a retune for a second platform.",
             "If a generate run fails, use the contact page and include the topic and the time."
           ]
+        },
+        {
+          "heading": "What the platforms actually say",
+          "paragraphs": [
+            "YouTube’s create flow is record or upload, then add a title of up to 100 characters, then publish. ShortDrafts fills the writing you need before that flow: topic, platform, style, length, then a pack you can speak and paste.",
+            "Pick one idea and one hook. Shoot or voice it in the app you actually post to. Come back only for a second angle or a caption retune."
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "quote": "YouTube Shorts is a way for anyone to connect with a new audience using just a smartphone and the Shorts camera in the YouTube app. YouTube’s Shorts creation tools makes it easy to create short-form videos that are up to 3 minutes long with our multi-segment camera.",
+          "attribution": "YouTube Help, Get started creating YouTube Shorts",
+          "url": "https://support.google.com/youtube/answer/10059070"
+        },
+        {
+          "quote": "From this screen, add a title (max 100 characters), and choose settings, like video privacy.",
+          "attribution": "YouTube Help, Get started creating YouTube Shorts",
+          "url": "https://support.google.com/youtube/answer/10059070"
         }
       ]
     }

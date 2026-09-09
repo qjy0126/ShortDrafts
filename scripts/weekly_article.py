@@ -12,6 +12,7 @@ from datetime import date, datetime, timezone
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
+AUTHORS_PATH = ROOT / "assets" / "authors.json"
 FAQ_PATH = ROOT / "assets" / "faq-articles.json"
 FAQ_JS = ROOT / "assets" / "faq.js"
 
@@ -80,6 +81,14 @@ def load_env() -> None:
         os.environ[key.strip()] = value.strip().strip('"').strip("'")
 
 
+def pick_author(guide_id: str) -> dict:
+    people = json.loads(AUTHORS_PATH.read_text(encoding="utf-8")).get("people") or []
+    if not people:
+        return {"id": "short-drafts-editors", "name": "ShortDrafts Editors"}
+    total = sum(ord(ch) for ch in guide_id)
+    return people[total % len(people)]
+
+
 def published_label(today: date) -> str:
     return f"{today.strftime('%b')} {today.day}, {today.year}"
 
@@ -96,7 +105,7 @@ def extract_json(text: str) -> dict:
     return json.loads(text[start : end + 1])
 
 
-def agnes_guide(lane: dict, angle: str, guide_id: str, published: str) -> dict | None:
+def agnes_guide(lane: dict, angle: str, guide_id: str, published: str, person: dict) -> dict | None:
     key = os.environ.get("AGNES_API_KEY", "")
     if not key:
         return None
@@ -156,13 +165,15 @@ def agnes_guide(lane: dict, angle: str, guide_id: str, published: str) -> dict |
     data["published"] = published
     data["image"] = lane["image"]
     data["alt"] = lane["alt"]
+    data["author"] = person["name"]
+    data["authorId"] = person["id"]
     data["category"] = "Use case"
     if not data.get("title") or not data.get("excerpt") or not data.get("sections"):
         return None
     return data
 
 
-def fallback_guide(lane: dict, angle: str, guide_id: str, published: str) -> dict:
+def fallback_guide(lane: dict, angle: str, guide_id: str, published: str, person: dict) -> dict:
     name = lane["name"]
     title_map = {
         "how to brief the generator for this lane": f"How to brief a {name} pack",
@@ -179,6 +190,8 @@ def fallback_guide(lane: dict, angle: str, guide_id: str, published: str) -> dic
         "image": lane["image"],
         "alt": lane["alt"],
         "published": published,
+        "author": person["name"],
+        "authorId": person["id"],
         "sections": [
             {
                 "heading": "Stay in this lane",
@@ -235,12 +248,21 @@ def main() -> None:
         return
 
     published = published_label(today)
-    guide = agnes_guide(lane, angle, guide_id, published) or fallback_guide(
-        lane, angle, guide_id, published
+    person = pick_author(guide_id)
+    guide = agnes_guide(lane, angle, guide_id, published, person) or fallback_guide(
+        lane, angle, guide_id, published, person
     )
     faq["guides"] = [guide] + guides
     FAQ_PATH.write_text(json.dumps(faq, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
     bump_faq_cache()
+    import sys
+
+    sys.path.insert(0, str(ROOT / "scripts"))
+    from prerender import prerender
+    from build_sitemap import write_sitemap
+
+    prerender()
+    write_sitemap()
     print(f"published {guide_id} lane={lane['slug']}")
 
 

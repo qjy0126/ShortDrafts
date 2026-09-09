@@ -11,6 +11,22 @@
     return new URLSearchParams(window.location.search).get("id") || "";
   }
 
+  function renderSources(sources) {
+    if (!sources || !sources.length) return "";
+    return (
+      "<h2>Sources</h2>" +
+      sources
+        .map(
+          (source) => `
+      <blockquote cite="${esc(source.url)}">
+        <p>${esc(source.quote)}</p>
+        <footer>— <cite><a href="${esc(source.url)}" rel="noopener noreferrer">${esc(source.attribution)}</a></cite></footer>
+      </blockquote>`
+        )
+        .join("")
+    );
+  }
+
   function renderSections(sections) {
     return (sections || [])
       .map((section) => {
@@ -33,12 +49,13 @@
     list.innerHTML = guides
       .map(
         (guide) => `
-      <a class="guide-row" href="guide.html?id=${encodeURIComponent(guide.id)}">
+      <a class="guide-row" href="guides/${encodeURIComponent(guide.id)}.html">
         <img src="${esc(guide.image)}" width="184" height="184" alt="${esc(guide.alt)}">
         <div class="guide-row__copy">
           <span class="guide-kicker">${esc(guide.category)}</span>
           <h2>${esc(guide.title)}</h2>
           <p>${esc(guide.excerpt)}</p>
+          <p class="guide-row__meta">By ${esc(guide.author || "")} · ${esc(guide.published)}</p>
         </div>
         <span class="guide-open">Open →</span>
       </a>`
@@ -61,20 +78,27 @@
     document.title = `${guide.title} — ShortDrafts`;
     const meta = document.querySelector('meta[name="description"]');
     if (meta) meta.setAttribute("content", guide.excerpt);
+    const seo = window.ShortDraftsSeo;
+    if (seo) seo.applyArticle(guide, { path: `guide.html?id=${encodeURIComponent(guide.id)}` });
     root.innerHTML = `
       <p class="guide-kicker">${esc(guide.category)}</p>
       <h1>${esc(guide.title)}</h1>
       <p class="guide-dek">${esc(guide.excerpt)}</p>
-      <p class="guide-byline">By <b>ShortDrafts</b> · Published ${esc(guide.published)}</p>
-      ${renderSections(guide.sections)}`;
+      ${seo ? seo.bylineHtml(guide) : `<p class="guide-byline">By <b>${esc(guide.author)}</b> · Published ${esc(guide.published)}</p>`}
+      ${renderSections(guide.sections)}
+      ${renderSources(guide.sources)}
+      <a class="btn btn-primary guide-cta" href="generate.html">Generate for Free →</a>`;
   }
 
-  fetch("assets/faq-articles.json?v=6")
-    .then((response) => {
+  const seo = window.ShortDraftsSeo;
+  Promise.all([
+    fetch("assets/faq-articles.json?v=10").then((response) => {
       if (!response.ok) throw new Error("Could not load guides");
       return response.json();
-    })
-    .then((data) => {
+    }),
+    seo ? seo.loadPeople() : Promise.resolve([]),
+  ])
+    .then(([data]) => {
       const guides = data.guides || [];
       renderList(guides);
       renderArticle(guides);

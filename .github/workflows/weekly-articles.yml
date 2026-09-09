@@ -26,4 +26,4 @@ jobs:
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: Add this week's ShortDrafts use-case guide.
-          file_pattern: assets/faq-articles.json assets/faq.js
+          file_pattern: assets/faq-articles.json assets/faq.js sitemap.xml use/*.html guides/*.html

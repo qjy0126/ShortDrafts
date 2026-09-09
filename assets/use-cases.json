@@ -8,6 +8,8 @@
       "image": "assets/images/use-faceless.jpg",
       "alt": "A faceless filming setup with a camera, ring light, and styled table",
       "published": "Sep 7, 2026",
+      "author": "Theo Marsh",
+      "authorId": "theo-marsh",
       "sections": [
         {
           "heading": "Who this is for",
@@ -43,6 +45,20 @@
           "paragraphs": [
             "Footage, voice, music, and the edit. If a claim would need a license or a lab, it does not belong in a 30-second faceless script. Say what you can show."
           ]
+        },
+        {
+          "heading": "What the platforms actually say",
+          "paragraphs": [
+            "YouTube’s own help pages treat Shorts as something you record or upload from a phone, then title, then publish. The writing still has to exist before that camera roll. A faceless pack is the spoken and on-screen layer so you are not inventing lines while the ring light is already on.",
+            "Keep the script shorter than the platform maximum. Three minutes is allowed on Shorts; a faceless niche clip usually dies if the voiceover wanders. One claim, one proof, one recap is enough for a day of posting."
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "quote": "YouTube Shorts is a way for anyone to connect with a new audience using just a smartphone and the Shorts camera in the YouTube app. YouTube’s Shorts creation tools makes it easy to create short-form videos that are up to 3 minutes long with our multi-segment camera.",
+          "attribution": "YouTube Help, Get started creating YouTube Shorts",
+          "url": "https://support.google.com/youtube/answer/10059070"
         }
       ]
     },
@@ -54,6 +70,8 @@
       "image": "assets/images/use-story.jpg?v=3",
       "alt": "A young woman reading a story on her phone in a bright cafe",
       "published": "Sep 7, 2026",
+      "author": "Harper Quinn",
+      "authorId": "harper-quinn",
       "sections": [
         {
           "heading": "What works in 30 seconds",
@@ -79,6 +97,25 @@
             "Read the script out loud. Cut any line that explains the joke. Keep the on-screen text for the ranked numbers or the one sentence that makes someone stay.",
             "If you are retelling a real incident, do not ask the generator to invent facts. Bring the true beat, then let the pack write the wrap."
           ]
+        },
+        {
+          "heading": "What the platforms actually say",
+          "paragraphs": [
+            "YouTube now allows Shorts up to three minutes, which tempts people to write a cold open that takes twenty seconds. That extra room is for a turn and a landing, not a greeting. If the story can be told in 30 seconds, leave the rest unshot.",
+            "YouTube even offers in-app feedback on hook and pacing. Use that after you shoot, not as a reason to skip writing the first line. The pack’s five hooks exist so you can pick one claim before you open the camera."
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "quote": "You can now create YouTube Shorts up to three minutes in length. This gives you more time to tell your stories, showcase your creativity, and captivate your audience.",
+          "attribution": "YouTube Help, Understand three-minute YouTube Shorts",
+          "url": "https://support.google.com/youtube/answer/15424877"
+        },
+        {
+          "quote": "Get feedback: Tap the Get feedback button to get an analysis of your video's hook, pacing, and more.",
+          "attribution": "YouTube Help, Get started creating YouTube Shorts",
+          "url": "https://support.google.com/youtube/answer/10059070"
         }
       ]
     },
@@ -90,6 +127,8 @@
       "image": "assets/images/use-education.jpg?v=3",
       "alt": "A course creator explaining a concept at a bright desk",
       "published": "Sep 7, 2026",
+      "author": "Dominic Ruiz",
+      "authorId": "dominic-ruiz",
       "sections": [
         {
           "heading": "One idea, not a course",
@@ -115,6 +154,25 @@
             "Talking head works if you can hold the frame. Faceless works if the proof is a screen, a whiteboard, or hands. Either way, the script should still make sense with the picture off.",
             "If a claim would need a license, a lab, or a lawyer, stop. Say what you can demonstrate in the clip. The generator drafts the words. You keep the stop line."
           ]
+        },
+        {
+          "heading": "What the platforms actually say",
+          "paragraphs": [
+            "An explainer Short is still a phone video. YouTube describes Shorts as short-form clips you record or upload, then title in 100 characters or less. The lesson has to fit that container: one outcome, one proof, one recap.",
+            "If you need a syllabus, record a long video. If you need a 30-second correction a nurse or intern can use before the clip ends, stay in the pack length you picked. Padding a one-move lesson to three minutes usually adds throat-clearing, not proof."
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "quote": "YouTube Shorts is a way for anyone to connect with a new audience using just a smartphone and the Shorts camera in the YouTube app. YouTube’s Shorts creation tools makes it easy to create short-form videos that are up to 3 minutes long with our multi-segment camera.",
+          "attribution": "YouTube Help, Get started creating YouTube Shorts",
+          "url": "https://support.google.com/youtube/answer/10059070"
+        },
+        {
+          "quote": "Get feedback: Tap the Get feedback button to get an analysis of your video's hook, pacing, and more.",
+          "attribution": "YouTube Help, Get started creating YouTube Shorts",
+          "url": "https://support.google.com/youtube/answer/10059070"
         }
       ]
     },
@@ -126,6 +184,8 @@
       "image": "assets/images/use-product.jpg?v=2",
       "alt": "Men's sneakers, watch, and cologne being filmed for a short promo",
       "published": "Sep 7, 2026",
+      "author": "Elena Voss",
+      "authorId": "elena-voss",
       "sections": [
         {
           "heading": "What to paste",
@@ -150,6 +210,25 @@
           "paragraphs": [
             "It will not stitch stock, clone a voice, or guarantee a sale. Claims about medical results, income, or guaranteed outcomes do not belong in a 30-second promo here. Copy the words, then shoot what is actually on the table."
           ]
+        },
+        {
+          "heading": "What the platforms actually say",
+          "paragraphs": [
+            "A promo pack is advertising copy. If you were paid, given the product, or related to the brand, U.S. endorsement rules expect that connection to be obvious in the clip or caption. ShortDrafts will not write a fake “not a paid ad” line to hide a deal.",
+            "YouTube still wants a title of at most 100 characters when you upload a Short. Use one of the pack titles; do not paste a paragraph into that field. Show the product in the first seconds if the script names it."
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "quote": "If there is a connection between an endorser and the seller that consumers would not expect, that connection should be disclosed clearly and conspicuously.",
+          "attribution": "U.S. Federal Trade Commission, Endorsement Guides",
+          "url": "https://www.ftc.gov/business-guidance/resources/ftcs-endorsement-guides-what-people-are-asking"
+        },
+        {
+          "quote": "From this screen, add a title (max 100 characters), and choose settings, like video privacy.",
+          "attribution": "YouTube Help, Get started creating YouTube Shorts",
+          "url": "https://support.google.com/youtube/answer/10059070"
         }
       ]
     },
@@ -161,6 +240,8 @@
       "image": "assets/images/use-podcast.jpg",
       "alt": "A podcast microphone, headphones, and laptop on a white desk",
       "published": "Sep 7, 2026",
+      "author": "Chris Lang",
+      "authorId": "chris-lang",
       "sections": [
         {
           "heading": "Cut-downs, not the episode",
@@ -185,6 +266,20 @@
           "paragraphs": [
             "Do not ask the generator to invent a guest quote. Bring the real line, then let the pack write the wrap around it. If the original take was messy, that is fine — the Short can be clean without becoming a different claim."
           ]
+        },
+        {
+          "heading": "What the platforms actually say",
+          "paragraphs": [
+            "A feed clip is not the episode. YouTube’s longer Shorts limit is useful when a take needs a second of air, not when you try to recap a 40-minute interview. Paste the one paragraph that is the clip, then let the pack write a standalone 15–30 second script.",
+            "Do not invent a guest quote. If the original line is messy, the Short can be cleaner without becoming a different claim."
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "quote": "You can now create YouTube Shorts up to three minutes in length. This gives you more time to tell your stories, showcase your creativity, and captivate your audience.",
+          "attribution": "YouTube Help, Understand three-minute YouTube Shorts",
+          "url": "https://support.google.com/youtube/answer/15424877"
         }
       ]
     },
@@ -196,6 +291,8 @@
       "image": "assets/images/use-platforms.jpg?v=2",
       "alt": "Three phones standing in a row, each showing a vertical video of male lifestyle clips",
       "published": "Sep 7, 2026",
+      "author": "Avery Kim",
+      "authorId": "avery-kim",
       "sections": [
         {
           "heading": "What changes per app",
@@ -220,6 +317,25 @@
           "paragraphs": [
             "You still shoot the clip. Algorithm tricks, bought views, and a promise that the pack will hit the For You page are not in scope. The writing is. If you only have time for one upload, pick the app you actually check, generate for that one, and post."
           ]
+        },
+        {
+          "heading": "What the platforms actually say",
+          "paragraphs": [
+            "YouTube asks for a Short title of up to 100 characters. TikTok can auto-generate captions from speech so deaf and hard-of-hearing viewers can follow the clip. Those are different jobs. One spoken script can travel; the title, caption, and on-screen lines should be retuned per app.",
+            "Generate once for the app you will post first. If you upload the same cut elsewhere, run the pack again with that platform selected instead of pasting the same caption three times."
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "quote": "From this screen, add a title (max 100 characters), and choose settings, like video privacy.",
+          "attribution": "YouTube Help, Get started creating YouTube Shorts",
+          "url": "https://support.google.com/youtube/answer/10059070"
+        },
+        {
+          "quote": "Auto-generated captions use speech recognition technology to generate text for audio or video content. Captions will be automatically generated for videos that you upload. This can help people who are deaf or hard of hearing to access content on TikTok.",
+          "attribution": "TikTok Support, Accessibility for your videos",
+          "url": "https://support.tiktok.com/en/using-tiktok/creating-videos/accessibility"
         }
       ]
     }

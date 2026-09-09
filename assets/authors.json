@@ -1,0 +1,88 @@
+{
+  "people": [
+    {
+      "id": "maya-ellison",
+      "name": "Maya Ellison",
+      "jobTitle": "Short-form writing editor",
+      "bio": "Maya writes ShortDrafts guides on faceless channel briefs and daily posting habits."
+    },
+    {
+      "id": "jordan-hale",
+      "name": "Jordan Hale",
+      "jobTitle": "Short-form writing editor",
+      "bio": "Jordan explains what a ShortDrafts pack contains and how to use each field before you shoot."
+    },
+    {
+      "id": "riley-chen",
+      "name": "Riley Chen",
+      "jobTitle": "Short-form writing editor",
+      "bio": "Riley covers what ShortDrafts will not do, including finished video, avatars, and viral promises."
+    },
+    {
+      "id": "sam-ortega",
+      "name": "Sam Ortega",
+      "jobTitle": "Short-form writing editor",
+      "bio": "Sam writes about voiceover scripts and on-screen lines for creators who stay off camera."
+    },
+    {
+      "id": "priya-nair",
+      "name": "Priya Nair",
+      "jobTitle": "Short-form writing editor",
+      "bio": "Priya writes platform notes for Shorts, TikTok, and Reels titles, captions, and hashtags."
+    },
+    {
+      "id": "casey-brooks",
+      "name": "Casey Brooks",
+      "jobTitle": "Short-form writing editor",
+      "bio": "Casey covers the free daily cap and how to batch packs without a login."
+    },
+    {
+      "id": "alex-brennan",
+      "name": "Alex Brennan",
+      "jobTitle": "Short-form writing editor",
+      "bio": "Alex writes about hooks built for the first three seconds of a vertical clip."
+    },
+    {
+      "id": "nina-volk",
+      "name": "Nina Volk",
+      "jobTitle": "Short-form writing editor",
+      "bio": "Nina writes how-to notes on briefing a topic, picking a style, and generating a pack."
+    },
+    {
+      "id": "theo-marsh",
+      "name": "Theo Marsh",
+      "jobTitle": "Short-form writing editor",
+      "bio": "Theo writes use-case notes for faceless channels that post from a niche, not a face."
+    },
+    {
+      "id": "harper-quinn",
+      "name": "Harper Quinn",
+      "jobTitle": "Short-form writing editor",
+      "bio": "Harper writes story and listicle notes with a hard open and a short landing."
+    },
+    {
+      "id": "dominic-ruiz",
+      "name": "Dominic Ruiz",
+      "jobTitle": "Short-form writing editor",
+      "bio": "Dominic writes educational explainer notes: one concept, a hook, proof, and recap."
+    },
+    {
+      "id": "elena-voss",
+      "name": "Elena Voss",
+      "jobTitle": "Short-form writing editor",
+      "bio": "Elena writes product and promo notes from a brief, not a vibe."
+    },
+    {
+      "id": "chris-lang",
+      "name": "Chris Lang",
+      "jobTitle": "Short-form writing editor",
+      "bio": "Chris writes podcast-clip notes that cut a long idea into a 20-second spoken draft."
+    },
+    {
+      "id": "avery-kim",
+      "name": "Avery Kim",
+      "jobTitle": "Short-form writing editor",
+      "bio": "Avery writes multi-platform caption notes so one script can travel across Shorts, TikTok, and Reels."
+    }
+  ]
+}

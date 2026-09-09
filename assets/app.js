@@ -33,10 +33,7 @@ function escapeHtml(value) {
 }
 
 function apiUrls(path) {
-  const direct = `http://127.0.0.1:4173${path}`;
-  const host = location.host;
-  if (host === "127.0.0.1:4173" || host === "localhost:4173") return [path];
-  return [direct, path];
+  return [path];
 }
 
 async function postJson(path, body) {
@@ -403,7 +400,9 @@ async function runGenerate() {
       const quotaMsg =
         response.status === 429
           ? "Today’s 10 free packs are used up. Come back tomorrow."
-          : data.error || "Generation failed";
+          : response.status === 404
+            ? "The public site is missing the generate API. Redeploy the Worker with worker.js."
+            : data.error || "Generation failed";
       throw new Error(quotaMsg);
     }
     applyPack(data);
@@ -412,7 +411,7 @@ async function runGenerate() {
     result.classList.add("is-error");
     const message =
       err.message === "Failed to fetch"
-        ? "Cannot reach the generator. Start it with python3 server.py, then open http://127.0.0.1:4173/"
+        ? "Cannot reach the generator. Refresh, or open this page after the API worker is deployed."
         : err.message;
     if (!result.querySelector(".pack-list")) {
       result.innerHTML = `<p>${escapeHtml(message)}</p>`;

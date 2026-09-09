@@ -6,8 +6,11 @@ from __future__ import annotations
 import json
 import os
 import re
+import ssl
 import threading
+import time
 import urllib.error
+import urllib.parse
 import urllib.request
 from datetime import date
 from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
@@ -19,6 +22,7 @@ USAGE_PATH = DATA_DIR / "usage.json"
 BLOCKED = {".env", ".gitignore"}
 FREE_LIMIT = 10
 USAGE_LOCK = threading.Lock()
+SSL_CTX = ssl.create_default_context()
 
 FIELD_SPECS = {
     "ideas": "exactly 3 short video ideas as a JSON array of strings",
@@ -239,7 +243,14 @@ def agnes_request(payload: dict, stream: bool = False):
         },
         method="POST",
     )
-    return urllib.request.urlopen(req, timeout=90)
+    last_error: Exception | None = None
+    for attempt in range(3):
+        try:
+            return urllib.request.urlopen(req, timeout=90, context=SSL_CTX)
+        except urllib.error.URLError as exc:
+            last_error = exc
+            time.sleep(0.5 * (attempt + 1))
+    raise RuntimeError(f"Could not reach Agnes ({last_error}). Try again.") from last_error
 
 
 def stream_content(payload: dict):
@@ -356,6 +367,20 @@ class Handler(SimpleHTTPRequestHandler):
         self.send_header("Access-Control-Allow-Headers", "Content-Type")
         self.send_header("Cache-Control", "no-store")
         super().end_headers()
+
+    def do_GET(self) -> None:
+        parsed = urllib.parse.urlparse(self.path)
+        query = urllib.parse.parse_qs(parsed.query)
+        article_id = (query.get("id") or [""])[0]
+        if parsed.path in {"/article", "/article.html"} and article_id:
+            target = ROOT / "use" / f"{article_id}.html"
+            if target.is_file():
+                self.path = f"/use/{article_id}.html"
+        elif parsed.path in {"/guide", "/guide.html"} and article_id:
+            target = ROOT / "guides" / f"{article_id}.html"
+            if target.is_file():
+                self.path = f"/guides/{article_id}.html"
+        super().do_GET()
 
     def do_OPTIONS(self) -> None:
         self.send_response(204)
