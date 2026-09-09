@@ -363,8 +363,42 @@ async function proxyGoogleTag(request, url) {
   return null;
 }
 
+function isHtmlPath(pathname) {
+  if (pathname.startsWith("/api/") || pathname.startsWith("/gtag/") || pathname === "/g/collect" || pathname === "/j/collect") {
+    return false;
+  }
+  if (/\.(js|css|png|jpe?g|gif|svg|ico|xml|txt|woff2?|map|json)$/i.test(pathname)) return false;
+  return true;
+}
+
+async function reportPageView(request) {
+  const url = new URL(request.url);
+  const ip = request.headers.get("CF-Connecting-IP") || "unknown";
+  const buf = await crypto.subtle.digest("SHA-256", new TextEncoder().encode("sd-ga:" + ip));
+  const hex = [...new Uint8Array(buf)].map((b) => b.toString(16).padStart(2, "0")).join("");
+  const cid = `${Number.parseInt(hex.slice(0, 8), 16)}.${Number.parseInt(hex.slice(8, 16), 16)}`;
+  const params = new URLSearchParams({
+    v: "2",
+    tid: "G-NSY7CFTQTE",
+    cid,
+    en: "page_view",
+    dl: url.href,
+    dt: "ShortDrafts",
+    sid: String(Math.floor(Date.now() / 1000)),
+    sct: "1",
+    seg: "1",
+    _et: "1",
+  });
+  await fetch("https://www.google-analytics.com/g/collect?" + params.toString(), {
+    method: "POST",
+    headers: {
+      "User-Agent": request.headers.get("User-Agent") || "Mozilla/5.0",
+    },
+  });
+}
+
 export default {
-  async fetch(request, env) {
+  async fetch(request, env, ctx) {
     const url = new URL(request.url);
     const proxied = await proxyGoogleTag(request, url);
     if (proxied) return proxied;
@@ -390,15 +424,25 @@ export default {
     if (env.ASSETS) {
       const path = url.pathname.replace(/\/$/, "") || "/";
       const id = (url.searchParams.get("id") || "").replace(/[^a-z0-9-]/gi, "");
+      let page;
       if (id && (path === "/article" || path === "/article.html")) {
-        const page = await env.ASSETS.fetch(new URL(`/use/${id}.html`, url.origin));
-        if (page.ok) return page;
+        page = await env.ASSETS.fetch(new URL(`/use/${id}.html`, url.origin));
+        if (!page.ok) page = null;
+      } else if (id && (path === "/guide" || path === "/guide.html")) {
+        page = await env.ASSETS.fetch(new URL(`/guides/${id}.html`, url.origin));
+        if (!page.ok) page = null;
       }
-      if (id && (path === "/guide" || path === "/guide.html")) {
-        const page = await env.ASSETS.fetch(new URL(`/guides/${id}.html`, url.origin));
-        if (page.ok) return page;
+      if (!page) page = await env.ASSETS.fetch(request);
+      if (
+        ctx &&
+        request.method === "GET" &&
+        page.ok &&
+        isHtmlPath(url.pathname) &&
+        String(page.headers.get("Content-Type") || "").includes("html")
+      ) {
+        ctx.waitUntil(reportPageView(request));
       }
-      return env.ASSETS.fetch(request);
+      return page;
     }
     return new Response("Not found", { status: 404 });
   },
