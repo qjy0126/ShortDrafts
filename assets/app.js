@@ -1,12 +1,3 @@
-(function loadAnalytics() {
-  if (window.__sdAnalytics) return;
-  window.__sdAnalytics = true;
-  const s = document.createElement("script");
-  s.src = "/assets/firebase-analytics.js?v=3";
-  s.async = true;
-  document.head.appendChild(s);
-})();
-
 document.getElementById("year") && (document.getElementById("year").textContent = new Date().getFullYear());
 
 const menuBtn = document.getElementById("menu-btn");
