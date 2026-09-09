@@ -265,11 +265,11 @@ export default {
       const path = url.pathname.replace(/\/$/, "") || "/";
       const id = (url.searchParams.get("id") || "").replace(/[^a-z0-9-]/gi, "");
       if (id && (path === "/article" || path === "/article.html")) {
-        const page = await env.ASSETS.fetch(new Request(new URL(`/use/${id}.html`, url.origin), request));
+        const page = await env.ASSETS.fetch(new URL(`/use/${id}.html`, url.origin));
         if (page.ok) return page;
       }
       if (id && (path === "/guide" || path === "/guide.html")) {
-        const page = await env.ASSETS.fetch(new Request(new URL(`/guides/${id}.html`, url.origin), request));
+        const page = await env.ASSETS.fetch(new URL(`/guides/${id}.html`, url.origin));
         if (page.ok) return page;
       }
       return env.ASSETS.fetch(request);
