@@ -55,10 +55,10 @@ Keep the same voice: direct, no viral promises, no MP4, no avatar studio.
 2. Write or revise one article (or a small set the user named). Put new guides at the top of `guides` / `articles`.
 3. Validate JSON parses.
 4. If the user asked to put it on GitHub, commit only the JSON (and images if added). Message like `Add guide on batching faceless scripts.` Then push `main` to `origin`.
-5. Tell the user: GitHub commit is live at https://github.com/qjy0126/shortsmind ; local preview is `http://127.0.0.1:4173/faq.html` or the use-case card.
+5. Tell the user: GitHub commit is live at https://github.com/qjy0126/ShortDrafts ; local preview is `http://127.0.0.1:4173/faq.html` or the use-case card.
 
 ## Push notes
 
-Never commit `.env`. If `git push` to github.com times out, use the GitHub API Contents/Git Data flow against `qjy0126/shortsmind` on `main`, same as this repo's first upload.
+Never commit `.env`. If `git push` to github.com times out, use the GitHub API Contents/Git Data flow against `qjy0126/ShortDrafts` on `main`, same as this repo's first upload.
 
 GitHub Actions can publish twice a week via `.github/workflows/weekly-articles.yml`. This skill is for extra articles between those runs, or for edits.
