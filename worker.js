@@ -336,9 +336,38 @@ async function handleRegenerate(request, env) {
   return json({ field, value, remaining: quota.left, writer });
 }
 
+async function proxyGoogleTag(request, url) {
+  if (url.pathname === "/gtag/js") {
+    const res = await fetch("https://www.googletagmanager.com/gtag/js" + url.search);
+    return new Response(res.body, {
+      status: res.status,
+      headers: {
+        "Content-Type": "application/javascript; charset=UTF-8",
+        "Cache-Control": "public, max-age=3600",
+      },
+    });
+  }
+  if (url.pathname === "/g/collect" || url.pathname === "/j/collect") {
+    const dest = "https://www.google-analytics.com" + url.pathname + url.search;
+    const headers = new Headers();
+    const contentType = request.headers.get("Content-Type");
+    if (contentType) headers.set("Content-Type", contentType);
+    headers.set("User-Agent", request.headers.get("User-Agent") || "Mozilla/5.0");
+    const init = { method: request.method, headers };
+    if (request.method !== "GET" && request.method !== "HEAD") {
+      init.body = await request.arrayBuffer();
+    }
+    const res = await fetch(dest, init);
+    return new Response(null, { status: res.status, headers: { "Cache-Control": "no-store" } });
+  }
+  return null;
+}
+
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
+    const proxied = await proxyGoogleTag(request, url);
+    if (proxied) return proxied;
     if (request.method === "OPTIONS") {
       return new Response(null, {
         headers: {
