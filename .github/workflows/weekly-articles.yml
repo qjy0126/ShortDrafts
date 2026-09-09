@@ -27,3 +27,13 @@ jobs:
         with:
           commit_message: Add this week's ShortDrafts use-case guide.
           file_pattern: assets/faq-articles.json assets/faq.js sitemap.xml use/*.html guides/*.html
+      - name: Deploy Worker
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: deploy
+          secrets: |
+            AGNES_API_KEY
+        env:
+          AGNES_API_KEY: ${{ secrets.AGNES_API_KEY }}

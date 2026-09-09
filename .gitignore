@@ -4,6 +4,8 @@ __pycache__/
 *.pyc
 data/
 .vscode/
+.wrangler/
 7a10d1a6843c9b8e8e1fa59326bdb1ef.png
 264cdf8b5900a0f6848e5c0848670f09.png
+docs/ShortDrafts-上线与Cloudflare操作文档.md
 
