@@ -1,3 +1,7 @@
+if (document.currentScript && document.currentScript.src) {
+  import(new URL("firebase-analytics.js", document.currentScript.src).href).catch(() => {});
+}
+
 document.getElementById("year") && (document.getElementById("year").textContent = new Date().getFullYear());
 
 const menuBtn = document.getElementById("menu-btn");
