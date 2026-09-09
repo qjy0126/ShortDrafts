@@ -226,8 +226,9 @@ function paintField(key, pack, pending = false) {
 function applyPack(pack) {
   const incoming = pack && typeof pack === "object" ? pack : {};
   const next = { ...emptyPack(), ...lastPack };
+  const skip = new Set(["remaining", "limit", "error", "writer"]);
   for (const [key, value] of Object.entries(incoming)) {
-    if (value == null) continue;
+    if (skip.has(key) || value == null) continue;
     if (Array.isArray(value) && value.length === 0) continue;
     if (value === "") continue;
     next[key] = value;
@@ -388,7 +389,7 @@ async function runGenerate() {
   result.innerHTML = "";
   thinking.hidden = false;
   thinking.classList.add("is-on");
-  thinkingText.textContent = "Writing your pack. This can take about 15 seconds…";
+  thinkingText.textContent = "Writing your pack…";
   setBusy(true);
   ensureCards();
   persist();
@@ -406,6 +407,12 @@ async function runGenerate() {
       throw new Error(quotaMsg);
     }
     applyPack(data);
+    if (data.writer === "draft") {
+      result.insertAdjacentHTML(
+        "afterbegin",
+        `<p>Backup draft while the main writer was busy. Copy, edit, and post.</p>`
+      );
+    }
     CARDS.forEach((card) => paintField(card.key, lastPack, false));
   } catch (err) {
     result.classList.add("is-error");

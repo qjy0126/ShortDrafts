@@ -7,6 +7,9 @@ directory = "."
 binding = "ASSETS"
 run_worker_first = true
 
+[ai]
+binding = "AI"
+
 [vars]
 AGNES_BASE_URL = "https://apihub.agnes-ai.com/v1"
 AGNES_MODEL = "agnes-2.5-flash"

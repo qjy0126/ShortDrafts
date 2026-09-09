@@ -103,11 +103,69 @@ async function consume(ip) {
   return { ok: true, left: Math.max(0, FREE_LIMIT - count) };
 }
 
+function clip(value, n) {
+  const text = String(value || "").replace(/\s+/g, " ").trim();
+  return text.length <= n ? text : `${text.slice(0, n - 1).trim()}…`;
+}
+
+function draftPack(topic, platform, style, length) {
+  const t = clip(topic, 80);
+  const where = platform || "TikTok";
+  const funny = /funny/i.test(style);
+  const story = /story/i.test(style);
+  const short = /15/.test(length);
+  const hookStart = funny
+    ? `Nobody asked for this ${t} take, but`
+    : story
+      ? `I ignored ${t} for months, then`
+      : `If you still think ${t} is simple,`;
+  const ideas = [
+    `A ${where} breakdown of ${t} people will save and replay`,
+    `Three ${t} moves that look small on camera but change the whole video`,
+    `The ${t} mistake everyone makes, then the 10-second fix`,
+  ];
+  const hooks = [
+    `${hookStart} watch this.`,
+    `Stop scrolling if ${t} keeps failing.`,
+    `This ${t} line is the whole video.`,
+    `I tested ${t} the wrong way first.`,
+    `Save this before you post about ${t}.`,
+  ].map((line) => clip(line, 90));
+  const spoken = short
+    ? `Okay, ${t}. Most people open with a weak first line, then wonder why nobody stays. Lead with one specific claim, show one proof, and end on one action. That is a full ${where} in under 30 seconds.`
+    : story
+      ? `I used to overexplain ${t}. The video that actually worked started with the mistake, showed the moment it clicked, then gave one next step. Tell it like a story, but cut every sentence that does not move the plot.`
+      : `Here is ${t} in a way you can post today. Open with the tension, give three tight points, and close with one CTA. No extra lore. If a line would not sound good out loud, cut it.`;
+  const titles = [
+    `${t}: the version people actually watch`,
+    `Do this before you post about ${t}`,
+    `The ${t} mistake killing your ${where}`,
+    `${t} in 20 seconds, no fluff`,
+    `Watch this, then rewrite your ${t} hook`,
+  ].map((line) => clip(line, 70));
+  return {
+    ideas,
+    hooks,
+    script: spoken,
+    titles,
+    caption: clip(
+      `${t} for ${where}. Steal the hook, say the script out loud, and post the on-screen lines as-is.`,
+      180
+    ),
+    cta: `Follow for the next ${t} pack, then post this today.`,
+    onscreen_text: [clip(t, 24).toUpperCase(), "WATCH THIS", "POST IT TODAY", "FOLLOW FOR MORE"],
+  };
+}
+
+function draftField(field, topic, platform, style, length) {
+  return draftPack(topic, platform, style, length)[field];
+}
+
 function packPayload(env, topic, platform, style, length) {
   return {
     model: env.AGNES_MODEL || "agnes-2.5-flash",
     temperature: 0.7,
-    max_tokens: 4096,
+    max_tokens: 1800,
     chat_template_kwargs: { enable_thinking: false },
     messages: [
       { role: "system", content: SYSTEM_PROMPT },
@@ -123,7 +181,7 @@ function regenPayload(env, field, topic, platform, style, length, pack) {
   return {
     model: env.AGNES_MODEL || "agnes-2.5-flash",
     temperature: 0.8,
-    max_tokens: 1200,
+    max_tokens: 800,
     chat_template_kwargs: { enable_thinking: false },
     messages: [
       {
@@ -147,49 +205,66 @@ function regenPayload(env, field, topic, platform, style, length, pack) {
   };
 }
 
-function friendlyAgnesError(err) {
-  const msg = err && err.message ? err.message : String(err || "Generation failed");
-  if (/HTTP 429/.test(msg)) {
-    return "The writer is busy right now. Wait about a minute, then generate again. This try was not counted.";
-  }
-  if (/AGNES_API_KEY is missing/.test(msg)) {
-    return "The generator is missing its key. Try again in a few minutes.";
-  }
-  return msg;
+function aiText(out) {
+  if (!out) return "";
+  if (typeof out === "string") return out;
+  if (typeof out.response === "string") return out.response;
+  return (((out.choices || [])[0] || {}).message || {}).content || "";
 }
 
-async function agnesComplete(env, payload) {
+async function agnesOnce(env, payload) {
   const key = env.AGNES_API_KEY;
   if (!key) throw new Error("AGNES_API_KEY is missing");
   const base = (env.AGNES_BASE_URL || "https://apihub.agnes-ai.com/v1").replace(/\/$/, "");
-  let lastError = new Error("Agnes request failed");
-  for (let i = 0; i < 4; i += 1) {
+  const response = await fetch(`${base}/chat/completions`, {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${key}`,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(payload),
+    signal: AbortSignal.timeout(14000),
+  });
+  const body = await response.json().catch(() => ({}));
+  if (!response.ok) {
+    throw new Error(`Agnes HTTP ${response.status}: ${JSON.stringify(body).slice(0, 300)}`);
+  }
+  const content = (((body.choices || [])[0] || {}).message || {}).content || "";
+  if (!String(content).trim()) throw new Error("Agnes returned an empty response");
+  return String(content);
+}
+
+async function workersAiOnce(env, payload) {
+  if (!env.AI) throw new Error("Workers AI unavailable");
+  const models = ["@cf/meta/llama-3.1-8b-instruct", "@cf/meta/llama-3.3-70b-instruct-fp8-fast"];
+  let lastError = new Error("Workers AI failed");
+  for (const model of models) {
     try {
-      const response = await fetch(`${base}/chat/completions`, {
-        method: "POST",
-        headers: {
-          Authorization: `Bearer ${key}`,
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(payload),
+      const out = await env.AI.run(model, {
+        messages: payload.messages,
+        max_tokens: Math.min(payload.max_tokens || 1800, 1800),
+        temperature: payload.temperature || 0.7,
       });
-      const body = await response.json().catch(() => ({}));
-      if (response.status === 429) {
-        throw new Error(`Agnes HTTP 429: ${JSON.stringify(body).slice(0, 300)}`);
-      }
-      if (!response.ok) {
-        throw new Error(`Agnes HTTP ${response.status}: ${JSON.stringify(body).slice(0, 300)}`);
-      }
-      const content = (((body.choices || [])[0] || {}).message || {}).content || "";
-      if (!String(content).trim()) throw new Error("Agnes returned an empty response");
-      return String(content);
+      const content = aiText(out);
+      if (String(content).trim()) return String(content);
+      lastError = new Error("Workers AI empty");
     } catch (err) {
       lastError = err;
-      const wait = /HTTP 429/.test(err.message) ? 2000 * (i + 1) : 400 * (i + 1);
-      await new Promise((resolve) => setTimeout(resolve, wait));
     }
   }
   throw lastError;
+}
+
+async function completeText(env, payload) {
+  try {
+    return { text: await agnesOnce(env, payload), writer: "agnes" };
+  } catch (agnesErr) {
+    try {
+      return { text: await workersAiOnce(env, payload), writer: "backup" };
+    } catch {
+      throw agnesErr;
+    }
+  }
 }
 
 function readBrief(data) {
@@ -215,14 +290,18 @@ async function handleGenerate(request, env) {
       429
     );
   }
+  const payload = packPayload(env, brief.topic, brief.platform, brief.style, brief.length);
+  let pack;
+  let writer = "draft";
   try {
-    const raw = await agnesComplete(env, packPayload(env, brief.topic, brief.platform, brief.style, brief.length));
-    const pack = normalizePack(extractJson(raw));
-    const quota = await consume(ip);
-    return json({ ...pack, remaining: quota.left, limit: FREE_LIMIT });
-  } catch (err) {
-    return json({ error: friendlyAgnesError(err), remaining: leftBefore }, 502);
+    const out = await completeText(env, payload);
+    pack = normalizePack(extractJson(out.text));
+    writer = out.writer;
+  } catch {
+    pack = draftPack(brief.topic, brief.platform, brief.style, brief.length);
   }
+  const quota = await consume(ip);
+  return json({ ...pack, remaining: quota.left, limit: FREE_LIMIT, writer });
 }
 
 async function handleRegenerate(request, env) {
@@ -241,19 +320,20 @@ async function handleRegenerate(request, env) {
     );
   }
   const pack = data.pack && typeof data.pack === "object" ? data.pack : {};
+  const payload = regenPayload(env, field, brief.topic, brief.platform, brief.style, brief.length, pack);
+  let value;
+  let writer = "draft";
   try {
-    const raw = await agnesComplete(
-      env,
-      regenPayload(env, field, brief.topic, brief.platform, brief.style, brief.length, pack)
-    );
-    const parsed = extractJson(raw);
-    const value = parsed.value ?? parsed[field];
+    const out = await completeText(env, payload);
+    const parsed = extractJson(out.text);
+    value = parsed.value ?? parsed[field];
     if (value == null) throw new Error("Could not regenerate that field");
-    const quota = await consume(ip);
-    return json({ field, value, remaining: quota.left });
-  } catch (err) {
-    return json({ error: friendlyAgnesError(err), remaining: leftBefore }, 502);
+    writer = out.writer;
+  } catch {
+    value = draftField(field, brief.topic, brief.platform, brief.style, brief.length);
   }
+  const quota = await consume(ip);
+  return json({ field, value, remaining: quota.left, writer });
 }
 
 export default {

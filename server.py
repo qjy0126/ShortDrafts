@@ -52,6 +52,70 @@ load_env()
 AGNES_API_KEY = os.environ.get("AGNES_API_KEY", "")
 AGNES_BASE_URL = os.environ.get("AGNES_BASE_URL", "https://apihub.agnes-ai.com/v1").rstrip("/")
 AGNES_MODEL = os.environ.get("AGNES_MODEL", "agnes-2.5-flash")
+
+
+def clip(value: str, n: int) -> str:
+    text = " ".join(str(value or "").split())
+    return text if len(text) <= n else text[: n - 1].rstrip() + "…"
+
+
+def draft_pack(topic: str, platform: str, style: str, length: str) -> dict:
+    t = clip(topic, 80)
+    where = platform or "TikTok"
+    funny = "funny" in style.lower()
+    story = "story" in style.lower()
+    short = "15" in length
+    hook_start = (
+        f"Nobody asked for this {t} take, but"
+        if funny
+        else f"I ignored {t} for months, then"
+        if story
+        else f"If you still think {t} is simple,"
+    )
+    spoken = (
+        f"Okay, {t}. Most people open with a weak first line, then wonder why nobody stays. "
+        "Lead with one specific claim, show one proof, and end on one action. "
+        f"That is a full {where} in under 30 seconds."
+        if short
+        else (
+            f"I used to overexplain {t}. The video that actually worked started with the mistake, "
+            "showed the moment it clicked, then gave one next step. Tell it like a story, "
+            "but cut every sentence that does not move the plot."
+            if story
+            else (
+                f"Here is {t} in a way you can post today. Open with the tension, give three tight points, "
+                "and close with one CTA. No extra lore. If a line would not sound good out loud, cut it."
+            )
+        )
+    )
+    return {
+        "ideas": [
+            f"A {where} breakdown of {t} people will save and replay",
+            f"Three {t} moves that look small on camera but change the whole video",
+            f"The {t} mistake everyone makes, then the 10-second fix",
+        ],
+        "hooks": [
+            clip(f"{hook_start} watch this.", 90),
+            clip(f"Stop scrolling if {t} keeps failing.", 90),
+            clip(f"This {t} line is the whole video.", 90),
+            clip(f"I tested {t} the wrong way first.", 90),
+            clip(f"Save this before you post about {t}.", 90),
+        ],
+        "script": spoken,
+        "titles": [
+            clip(f"{t}: the version people actually watch", 70),
+            clip(f"Do this before you post about {t}", 70),
+            clip(f"The {t} mistake killing your {where}", 70),
+            clip(f"{t} in 20 seconds, no fluff", 70),
+            clip(f"Watch this, then rewrite your {t} hook", 70),
+        ],
+        "caption": clip(
+            f"{t} for {where}. Steal the hook, say the script out loud, and post the on-screen lines as-is.",
+            180,
+        ),
+        "cta": f"Follow for the next {t} pack, then post this today.",
+        "onscreen_text": [clip(t, 24).upper(), "WATCH THIS", "POST IT TODAY", "FOLLOW FOR MORE"],
+    }
 PORT = int(os.environ.get("PORT", "4173"))
 
 SYSTEM_PROMPT = """You are a short-form content writer for YouTube Shorts, TikTok, and Instagram Reels.
@@ -244,12 +308,14 @@ def agnes_request(payload: dict, stream: bool = False):
         method="POST",
     )
     last_error: Exception | None = None
-    for attempt in range(3):
+    for attempt in range(2):
         try:
-            return urllib.request.urlopen(req, timeout=90, context=SSL_CTX)
+            return urllib.request.urlopen(req, timeout=20, context=SSL_CTX)
+        except urllib.error.HTTPError:
+            raise
         except urllib.error.URLError as exc:
             last_error = exc
-            time.sleep(0.5 * (attempt + 1))
+            time.sleep(0.4 * (attempt + 1))
     raise RuntimeError(f"Could not reach Agnes ({last_error}). Try again.") from last_error
 
 
@@ -303,7 +369,7 @@ def pack_payload(topic: str, platform: str, style: str, length: str) -> dict:
     return {
         "model": AGNES_MODEL,
         "temperature": 0.7,
-        "max_tokens": 4096,
+        "max_tokens": 1800,
         "chat_template_kwargs": {"enable_thinking": False},
         "messages": [
             {"role": "system", "content": SYSTEM_PROMPT},
@@ -326,7 +392,7 @@ def regen_payload(field: str, topic: str, platform: str, style: str, length: str
     return {
         "model": AGNES_MODEL,
         "temperature": 0.8,
-        "max_tokens": 1200,
+        "max_tokens": 800,
         "chat_template_kwargs": {"enable_thinking": False},
         "messages": [
             {
@@ -444,16 +510,15 @@ class Handler(SimpleHTTPRequestHandler):
         try:
             raw = complete_content(pack_payload(topic, platform, style, length))
             pack = normalize_pack(extract_json(raw))
-            self._json(200, {**pack, "remaining": left, "limit": FREE_LIMIT})
+            writer = "agnes"
         except (BrokenPipeError, ConnectionResetError):
             refund_quota(ip)
+            return
         except Exception as exc:
-            refund_quota(ip)
-            self.log_error("generate failed: %s", exc)
-            try:
-                self._json(502, {"error": str(exc), "remaining": remaining_for(ip)})
-            except (BrokenPipeError, ConnectionResetError, OSError):
-                return
+            self.log_error("generate fallback: %s", exc)
+            pack = draft_pack(topic, platform, style, length)
+            writer = "draft"
+        self._json(200, {**pack, "remaining": left, "limit": FREE_LIMIT, "writer": writer})
 
     def _regenerate(self, data: dict) -> None:
         brief = self._brief(data)
@@ -482,10 +547,12 @@ class Handler(SimpleHTTPRequestHandler):
             value = parsed.get("value", parsed.get(field))
             if value is None:
                 raise RuntimeError("Could not regenerate that field")
-            self._json(200, {"field": field, "value": value, "remaining": left})
+            writer = "agnes"
         except Exception as exc:
-            self.log_error("regenerate failed: %s", exc)
-            self._json(502, {"error": str(exc)})
+            self.log_error("regenerate fallback: %s", exc)
+            value = draft_pack(topic, platform, style, length).get(field)
+            writer = "draft"
+        self._json(200, {"field": field, "value": value, "remaining": left, "writer": writer})
 
     def _sse(self, payload: dict) -> None:
         blob = f"data: {json.dumps(payload, ensure_ascii=False)}\n\n".encode("utf-8")
